@@ -1,0 +1,108 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:1
+        -:    1:/**********************************************************************************
+        -:    2: * 
+        -:    3: 
+        -:    4:	FILENAME: main.c
+        -:    5:	DESCRIPTION:This file is used to display the main menu to the user.
+        -:    6:   	REVISION HISTORY	
+        -:    7:	DATE            NAME              REASON
+        -:    8:	------------------------------------------------------------------
+        -:    9:	25/8/22        USername          This is done for creationof menu  	
+        -:   10:	
+        -:   11: * ********************************************************************************/
+        -:   12:
+        -:   13:#include <stdio.h>       //Including required Header files
+        -:   14:#include <stdlib.h>      //Includes standard libraries
+        -:   15:#include <string.h>      //Includes string functions
+        -:   16:#include <ctype.h>       //Includes functions of ctype 
+        -:   17:#include "functions.h"   //Header file
+        -:   18:#include "func1.c"       //Including func1.c file
+        -:   19:#include "func2.c"	 //Including func2.c file
+        -:   20:#include "func3.c"       //Including func3.c file
+        -:   21:#define MAXPW 32     //Define Macro 
+function main called 1 returned 100% blocks executed 93%
+        1:   22:int main()	
+        -:   23:{
+        1:   24:	char pw[MAXPW] = {0};
+        1:   25:	char *pass = pw;
+        1:   26:	FILE *fp = stdin;
+        -:   27:	ssize_t nchr;
+        1:   28:	int choice=0;
+        1:   29:	start=new=ptr=prev=NULL;               //initializing pointer for plot structure.
+        1:   30:	start1=new1=ptr1=prev1=NULL;           //initializing pointer for participant structure
+        1:   31:	plot_file_to_list();                   //brings data from plot file to linked list
+call    0 returned 1
+        1:   32:	participant_file_to_list();            //brings data from participant file to linked list
+call    0 returned 1
+        4:   33:	while(choice!=3)
+branch  0 taken 3
+branch  1 taken 1 (fallthrough)
+        -:   34:	{	
+        -:   35:		//Displaying Main Menu
+        3:   36:		printf("\n         Main Menu");
+call    0 returned 3
+        3:   37:		printf("\n-----------------------------\n");
+call    0 returned 3
+        3:   38:		printf("\n1.Participant Corner\n2.ZDA Authority\n3.Exit");
+call    0 returned 3
+        -:   39:
+        3:   40:		printf("\nEnter choice: "); //Taking users choice
+call    0 returned 3
+        3:   41:		scanf("%d",&choice);
+call    0 returned 3
+        3:   42:		switch(choice)
+branch  0 taken 1
+branch  1 taken 1
+branch  2 taken 1
+branch  3 taken 0
+        -:   43:		{
+        1:   44:			case 1: Participant_Corner();   	//Function call for Participant_Corner  	
+call    0 returned 1
+        1:   45:				choice=0;
+        1:   46:				break;
+        1:   47:			case 2:	nchr = getpasswd (&pass, MAXPW, 0, fp);  
+call    0 returned 1
+        1:   48:		                printf ("Enter password: ");
+call    0 returned 1
+        1:   49:				nchr = getpasswd (&pass, MAXPW,0 , fp);
+call    0 returned 1
+        1:   50:				if((strcmp(pass,"ABC@123"))==0)
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        -:   51:				{
+        1:   52:					system("clear");          //clears the screen
+call    0 returned 1
+        1:   53:					ZDA_Authority();         //Function call for ZDA_Authority 
+call    0 returned 1
+        -:   54:				}
+        -:   55:				else
+        -:   56:				{
+    #####:   57:					printf("You have entered incorrect password");
+call    0 never executed
+        -:   58:				}
+        1:   59:				system("clear");
+call    0 returned 1
+        -:   60:
+        1:   61:				choice=0;
+        1:   62:				break;
+        1:   63:			case 3 : break;
+    #####:   64:			default: printf("Invalid Choice\n");
+call    0 never executed
+        -:   65:		}
+        -:   66:	}
+        1:   67:	if(start)                              //When start is not NULL
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:   68:		list_to_plot_file();           //Linked list to plot file
+call    0 returned 1
+        1:   69:	if(start1)                             //When start1 is not NULL
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:   70:		list_to_participant_file();    //Linked list to participant file
+call    0 returned 1
+        1:   71:	return EXIT_SUCCESS;
+        -:   72:}
+        -:   73:

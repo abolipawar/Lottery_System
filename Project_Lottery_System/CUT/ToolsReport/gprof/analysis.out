@@ -1,0 +1,35 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+ no time accumulated
+
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  Ts/call  Ts/call  name    
+  0.00      0.00     0.00        1     0.00     0.00  list_to_participant_file
+  0.00      0.00     0.00        1     0.00     0.00  list_to_plot_file
+  0.00      0.00     0.00        1     0.00     0.00  participant_file_to_list
+  0.00      0.00     0.00        1     0.00     0.00  plot_file_to_list
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) no time propagated
+
+index % time    self  children    called     name
+                0.00    0.00       1/1           main [23]
+[1]      0.0    0.00    0.00       1         list_to_participant_file [1]
+-----------------------------------------------
+                0.00    0.00       1/1           main [23]
+[2]      0.0    0.00    0.00       1         list_to_plot_file [2]
+-----------------------------------------------
+                0.00    0.00       1/1           main [23]
+[3]      0.0    0.00    0.00       1         participant_file_to_list [3]
+-----------------------------------------------
+                0.00    0.00       1/1           main [23]
+[4]      0.0    0.00    0.00       1         plot_file_to_list [4]
+-----------------------------------------------
+
+Index by function name
+
+   [1] list_to_participant_file [3] participant_file_to_list
+   [2] list_to_plot_file       [4] plot_file_to_list

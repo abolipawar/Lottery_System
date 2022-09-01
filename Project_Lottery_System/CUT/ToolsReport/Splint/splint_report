@@ -1,0 +1,238 @@
+func1.c:23: Include file <unistd.h> matches the name of a POSIX library, but
+    the POSIX library is not being used.  Consider using +posixlib or
+    +posixstrictlib to select the POSIX library, or -warnposix to suppress this
+    message.
+  Header name matches a POSIX header, but the POSIX library is not selected.
+  (Use -warnposixheaders to inhibit warning)
+func2.c:20: Include file <termios.h> matches the name of a POSIX library, but
+    the POSIX library is not being used.  Consider using +posixlib or
+    +posixstrictlib to select the POSIX library, or -warnposix to suppress this
+    message.
+func2.c:21: Include file <sys/types.h> matches the name of a POSIX library, but
+    the POSIX library is not being used.  Consider using +posixlib or
+    +posixstrictlib to select the POSIX library, or -warnposix to suppress this
+    message.
+func2.c:22: Include file <unistd.h> matches the name of a POSIX library, but
+    the POSIX library is not being used.  Consider using +posixlib or
+    +posixstrictlib to select the POSIX library, or -warnposix to suppress this
+    message.
+< Location unknown >: Field name reused: 
+  Code cannot be parsed.  For help on parse errors, see splint -help
+  parseerrors. (Use -syntax to inhibit warning)
+< Location unknown >: Previous use of 
+func1.c: (in function Participant_Corner)
+func1.c:50:3: Return value (type int) ignored: scanf("%d", &cho...
+  Result returned by function call is not used. If this is intended, can cast
+  result to (void) to eliminate message. (Use -retvalint to inhibit warning)
+func1.c:53:37: Function pthread_create expects arg 3 to be [function (void *)
+                  returns void *] * gets void *: (void *)grab_token
+  Types are incompatible. (Use -type to inhibit warning)
+func1.c:53:27: Passed storage &th not completely defined:
+                  pthread_create (&th, ...)
+  Storage derivable from a parameter, return value or global is not defined.
+  Use /*@out@*/ to denote passed or returned storage which need not be defined.
+  (Use -compdef to inhibit warning)
+func1.c:53:32: Null storage passed as non-null param:
+                  pthread_create (..., NULL, ...)
+  A possibly null pointer is passed as a parameter corresponding to a formal
+  parameter with no /*@null@*/ annotation.  If NULL may be used for this
+  parameter, add a /*@null@*/ annotation to the function parameter declaration.
+  (Use -nullpass to inhibit warning)
+func1.c:53:56: Null storage passed as non-null param:
+                  pthread_create (..., NULL)
+func1.c:53:12: Return value (type int) ignored: pthread_create(&...
+func1.c:54:28: Null storage passed as non-null param: pthread_join (..., NULL)
+func1.c:54:12: Return value (type int) ignored: pthread_join(th,...
+func1.c:57:12: Return value (type int) ignored: cancel_token()
+func1.c:60:12: Return value (type int) ignored: participate_in_l...
+func1.c:63:12: Return value (type int) ignored: view_allotment_d...
+func1.c: (in function grab_token)
+func1.c:92:2: Return value (type int) ignored: scanf("%d", &code)
+func1.c:93:18: Left operand of && is non-boolean (p *):
+                  (ptr1) && ptr1->family_id != code
+  The operand of a boolean operator is not a boolean. Use +ptrnegate to allow !
+  to be used on pointers. (Use -boolops to inhibit warning)
+func1.c:93:50: Only storage ptr1->next assigned to unqualified (in post loop
+                  increment): ptr1 = ptr1->next
+  The only reference to this storage is transferred to another reference (e.g.,
+  by returning it) that does not have the only annotation. This may lead to a
+  memory leak, since the new reference is not necessarily released. (Use
+  -onlytrans to inhibit warning)
+func1.c:107:3: Return value (type int) ignored: pthread_mutex_lo...
+func1.c:110:3: Return value (type int) ignored: pthread_mutex_un...
+func1.c: (in function cancel_token)
+func1.c:132:2: Return value (type int) ignored: scanf("%d", &code)
+func1.c:133:18: Left operand of && is non-boolean (p *):
+                   (ptr1) && ptr1->family_id != code
+func1.c:133:50: Only storage ptr1->next assigned to unqualified (in post loop
+                   increment): ptr1 = ptr1->next
+func1.c:130:6: Variable token declared but not used
+  A variable is declared but never used. Use /*@unused@*/ in front of
+  declaration to suppress message. (Use -varuse to inhibit warning)
+func1.c: (in function participate_in_lottery)
+func1.c:173:2: Return value (type int) ignored: scanf("%d", &code)
+func1.c:174:18: Left operand of && is non-boolean (p *):
+                   (ptr1) && ptr1->family_id != code
+func1.c:174:51: Only storage ptr1->next assigned to unqualified (in post loop
+                   increment): ptr1 = ptr1->next
+func1.c:196:16: Left operand of && is non-boolean (pt *):
+                   (ptr) && ptr->plot_no != lottery_no
+func1.c:196:59: Only storage ptr->next assigned to unqualified (in post loop
+                   increment): ptr = ptr->next
+func1.c:197:5: Left operand of && is non-boolean (pt *):
+                  (ptr) && ptr->plot_no == lottery_no
+func1.c:210:23: Function returns with non-null global ptr referencing null
+                   storage
+  A global variable does not satisfy its annotations when control is
+  transferred. (Use -globstate to inhibit warning)
+   func1.c:196:63: Storage ptr becomes null
+func1.c: (in function view_allotment_details)
+func1.c:233:2: Return value (type int) ignored: scanf("%d", &code)
+func1.c:234:18: Left operand of && is non-boolean (p *):
+                   (ptr1) && ptr1->family_id != code
+func1.c:234:51: Only storage ptr1->next assigned to unqualified (in post loop
+                   increment): ptr1 = ptr1->next
+func2.c: (in function ZDA_Authority)
+func2.c:44:3: Return value (type int) ignored: scanf("%d", &cho...
+func2.c:48:12: Return value (type int) ignored: maintain_plot_db()
+func2.c:51:12: Return value (type int) ignored: maintain_partici...
+func2.c:54:12: Return value (type int) ignored: initialize_queue()
+func2.c:57:12: Return value (type int) ignored: view_lottery_rep...
+func2.c: (in function maintain_participant_db)
+func2.c:88:3: Return value (type int) ignored: scanf("%d", &ch)
+func2.c:90:12: Return value (type int) ignored: add_participant()
+func2.c:93:12: Return value (type int) ignored: edit_participant()
+func2.c:96:12: Return value (type int) ignored: remove_participant()
+func2.c:99:11: Return value (type int) ignored: view_participant...
+func2.c: (in function maintain_plot_db)
+func2.c:129:3: Return value (type int) ignored: scanf("%d", &ch)
+func2.c:132:5: Return value (type int) ignored: add_plot()
+func2.c:135:12: Return value (type int) ignored: edit_plot()
+func2.c:138:12: Return value (type int) ignored: delete_plot()
+func2.c:141:12: Return value (type int) ignored: view_plot_details()
+func2.c: (in function view_lottery_report)
+func2.c:178:25: Only storage ptr1->next assigned to unqualified (in post loop
+                   increment): ptr1 = ptr1->next
+func2.c: (in function add_plot)
+func2.c:205:23: Function returns with non-null global new referencing null
+                   storage
+   func2.c:201:6: Storage new may become null
+func2.c:207:8: Test expression for while not boolean, type int: 1
+  Test expression type is not boolean or int. (Use -predboolint to inhibit
+  warning)
+func2.c:210:3: Return value (type int) ignored: scanf("%d", &new...
+func2.c:218:19: Left operand of && is non-boolean (pt *):
+                   (ptr) && ptr->plot_no != new->plot_no
+func2.c:218:56: Only storage ptr->next assigned to unqualified (in post loop
+                   increment): ptr = ptr->next
+func2.c:219:8: Left operand of && is non-boolean (pt *):
+                  (ptr) && ptr->plot_no == new->plot_no
+func2.c:235:8: Test expression for while not boolean, type int: 1
+func2.c:239:3: Return value (type int) ignored: scanf("%d", &new...
+func2.c:251:8: Test expression for while not boolean, type int: 1
+func2.c:255:3: Return value (type int) ignored: scanf("%lf", &ne...
+func2.c:272:10: Field new->plot_no used before definition
+  An rvalue is used that may not be initialized to a value on some execution
+  path. (Use -usedef to inhibit warning)
+func2.c:274:3: Unqualified storage start assigned to implicitly only:
+                  new->next = start
+  Unqualified storage is transferred in an inconsistent way. (Use
+  -unqualifiedtrans to inhibit warning)
+func2.c:279:18: Left operand of && is non-boolean (pt *):
+                   (ptr) && ptr->plot_no < new->plot_no
+func2.c:279:64: Only storage ptr->next assigned to unqualified (in post loop
+                   increment): ptr = ptr->next
+func2.c:280:3: Implicitly only storage prev->next (type struct plot *) not
+                  released before assignment: prev->next = new
+  A memory leak has been detected. Only-qualified storage is not released
+  before the last reference to it is lost. (Use -mustfreeonly to inhibit
+  warning)
+func2.c:281:3: Unqualified storage ptr assigned to implicitly only:
+                  new->next = ptr
+func2.c:282:2: Variable start is kept in false branch, but not kept in true
+                  branch.
+  The state of a variable is different depending on which branch is taken. This
+  means no annotation can sensibly be applied to the storage. (Use -branchstate
+  to inhibit warning)
+   func2.c:282:2: in false branch:
+   func2.c:281:3: Storage start becomes kept
+   func2.c:282:2: in true branch:
+   func2.c:275:3: Storage start becomes owned
+func2.c:283:7: Kept storage new passed as only param: free (new)
+  storage is transferred to a non-temporary reference after being passed as
+  keep parameter. The storage may be released or new aliases created. (Use
+  -kepttrans to inhibit warning)
+   func2.c:280:3: Storage new becomes kept
+func2.c:284:22: Function returns with global new referencing released storage
+   func2.c:283:7: Storage new released
+func2.c:284:22: Function returns with global start referencing released storage
+   func2.c:283:7: Storage start released
+func2.c:284:22: Function returns with global ptr referencing kept storage
+   func2.c:282:2: Storage ptr becomes kept
+func2.c:284:22: Function returns with global prev referencing kept storage
+   func2.c:282:2: Storage prev becomes kept
+func2.c: (in function edit_plot)
+func2.c:306:2: Return value (type int) ignored: scanf("%d", &code)
+func2.c:307:16: Left operand of && is non-boolean (pt *):
+                   (ptr) && ptr->plot_no != code
+func2.c:307:44: Only storage ptr->next assigned to unqualified (in post loop
+                   increment): ptr = ptr->next
+func2.c:314:8: Test expression for while not boolean, type int: 1
+func2.c:318:3: Return value (type int) ignored: scanf("%d", &ptr...
+func2.c:329:8: Test expression for while not boolean, type int: 1
+func2.c:333:3: Return value (type int) ignored: scanf("%lf", &pt...
+func2.c: (in function delete_plot)
+func2.c:365:2: Return value (type int) ignored: scanf("%d", &code)
+func2.c:369:3: Only storage start->next assigned to unqualified:
+                  start = start->next
+func2.c:370:8: Only storage ptr->next (type struct plot *) derived from
+                  released storage is not released (memory leak): ptr
+  A storage leak due to incomplete deallocation of a structure or deep pointer
+  is suspected. Unshared storage that is reachable from a reference that is
+  being deallocated has not yet been deallocated. Splint assumes when an object
+  is passed as an out only void pointer that the outer object will be
+  deallocated, but the inner objects will not. (Use -compdestroy to inhibit
+  warning)
+func2.c:370:8: Unqualified storage ptr passed as only param: free (ptr)
+   func2.c:282:2: Storage ptr becomes kept
+func2.c:374:17: Left operand of && is non-boolean (pt *):
+                   (ptr) && ptr->plot_no != code
+func2.c:374:54: Only storage ptr->next assigned to unqualified (in post loop
+                   increment): ptr = ptr->next
+func2.c:380:3: Implicitly only storage prev->next (type struct plot *) not
+                  released before assignment: prev->next = ptr->next
+func2.c:381:8: Kept storage ptr passed as only param: free (ptr)
+   func2.c:380:3: Storage ptr becomes kept
+func2.c:382:2: Variable start is released in false branch, but live in true
+                  branch.
+   func2.c:382:2: in false branch:
+   func2.c:381:8: Storage start released
+   func2.c:382:2: in true branch:
+   func2.c:369:3: Storage start defined
+func2.c:383:22: Function returns with global start referencing released storage
+   func2.c:381:8: Storage start released
+func2.c:383:22: Function returns with global ptr referencing released storage
+   func2.c:381:8: Storage ptr released
+func2.c:383:22: Function returns with global prev referencing released storage
+   func2.c:381:8: Storage prev released
+func2.c: (in function view_plot_details)
+func2.c:411:22: Only storage ptr->next assigned to unqualified (in post loop
+                   increment): ptr = ptr->next
+func2.c: (in function add_participant)
+func2.c:435:23: Function returns with non-null global new1 referencing null
+                   storage
+   func2.c:431:7: Storage new1 may become null
+func2.c:437:8: Test expression for while not boolean, type int: 1
+func2.c:440:3: Return value (type int) ignored: scanf("%d", &new...
+func2.c:448:21: Left operand of && is non-boolean (p *):
+                   (ptr1) && ptr1->family_id != new1->family_id
+func2.c:448:65: Only storage ptr1->next assigned to unqualified (in post loop
+                   increment): ptr1 = ptr1->next
+func2.c:449:8: Left operand of && is non-boolean (p *):
+                  (ptr1) && ptr1->family_id == new1->family_id
+func2.c:464:8: Test expression for while not boolean, type int: 1
+func2.c:467:3: Return value (type int) ignored: scanf(" %[^\n]s"...
+func2.c:468:11: Variable len initialized to type size_t, expects int:
+                   strlen(new1->name)
+  To allow arbitrary integral types to match any integral type, use
+  +matchanyintegral.
